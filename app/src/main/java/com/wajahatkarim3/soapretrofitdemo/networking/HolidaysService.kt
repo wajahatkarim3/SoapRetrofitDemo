@@ -1,27 +1,21 @@
 package com.wajahatkarim3.soapretrofitdemo.networking
 
-import com.wajahatkarim3.soapretrofitdemo.networking.HolidaysForYear.ArrayOfHoliday
+import com.wajahatkarim3.soapretrofitdemo.networking.responses.ArrayOfCountryCode
+import com.wajahatkarim3.soapretrofitdemo.networking.responses.ArrayOfHoliday
+import com.wajahatkarim3.soapretrofitdemo.networking.responses.ArrayOfHolidayCode
 import retrofit2.Call
 import retrofit2.http.*
 
 interface HolidaysService
 {
-    /*
-    @Headers(
-        "Content-Type: text/xml",
-        "Accept-Charset: utf-8"
-    )
-    @POST("GetHolidaysAvailable")
-    fun getHolidaysAvailable(@Body body: RequestEnvelope) : Call<ResponseEnvelope>
-    */
 
-    /*
-    @GET("GetHolidaysForYear")
-    fun getHolidaysForYear(
-            @Query("countryCode") countryCode: String,
-            @Query("year") year: String
-    ) : Call<String>
-    */
+    @GET("GetCountriesAvailable")
+    fun getCountriesAvailable() : Call<ArrayOfCountryCode>
+
+    @GET("GetHolidaysAvailable")
+    fun getHolidaysAvailable(
+            @Query("countryCode") countryCode: String
+    ) : Call<ArrayOfHolidayCode>
 
 
     @GET("GetHolidaysForYear")

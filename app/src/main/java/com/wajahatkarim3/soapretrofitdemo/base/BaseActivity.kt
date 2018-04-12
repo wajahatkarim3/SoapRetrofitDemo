@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.wajahatkarim3.soapretrofitdemo.MyApp
 import com.wajahatkarim3.soapretrofitdemo.R
+import com.wajahatkarim3.soapretrofitdemo.networking.HolidaysService
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -50,5 +51,10 @@ open class BaseActivity : AppCompatActivity() {
     fun BaseActivity.hideProgress()
     {
         progressDialog?.dismiss()
+    }
+
+    fun BaseActivity.getHolidaysAPI() : HolidaysService
+    {
+        return retrofit.create(HolidaysService::class.java)
     }
 }
