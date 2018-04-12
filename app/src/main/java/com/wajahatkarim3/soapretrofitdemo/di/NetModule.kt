@@ -6,6 +6,8 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import org.simpleframework.xml.convert.AnnotationStrategy
+import org.simpleframework.xml.core.Persister
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
@@ -41,7 +43,10 @@ class NetModule(val baseUrl: String)  {
     @Singleton
     fun provideSimpleXML() : SimpleXmlConverterFactory
     {
-        return SimpleXmlConverterFactory.create()
+        var strategy = AnnotationStrategy()
+        var serializer = Persister(strategy)
+
+        return SimpleXmlConverterFactory.createNonStrict(serializer)
     }
 
     // OkHttp Client with Stetho Intereceptor

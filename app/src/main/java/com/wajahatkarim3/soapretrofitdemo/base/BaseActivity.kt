@@ -1,5 +1,7 @@
 package com.wajahatkarim3.soapretrofitdemo.base
 
+import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,14 +11,16 @@ import com.wajahatkarim3.soapretrofitdemo.R
 import retrofit2.Retrofit
 import javax.inject.Inject
 
-class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
     @Inject lateinit var retrofit: Retrofit
+    var progressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         MyApp.appComponent.inject(this)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -37,6 +41,14 @@ class BaseActivity : AppCompatActivity() {
     // Kotlin Extension Methods
     fun BaseActivity.getApp() : MyApp = application as MyApp
 
+    fun BaseActivity.showProgress(messages: String)
+    {
+        progressDialog?.dismiss()
+        progressDialog = ProgressDialog.show(this, messages, "")
+    }
 
-
+    fun BaseActivity.hideProgress()
+    {
+        progressDialog?.dismiss()
+    }
 }

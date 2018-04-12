@@ -2,6 +2,7 @@ package com.wajahatkarim3.soapretrofitdemo.di
 
 import android.app.Application
 import android.support.v7.app.AppCompatActivity
+import com.wajahatkarim3.soapretrofitdemo.base.BaseActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -10,6 +11,6 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(app: Application)
-    fun inject(act: AppCompatActivity)
+    fun inject(act: BaseActivity)
 
 }
