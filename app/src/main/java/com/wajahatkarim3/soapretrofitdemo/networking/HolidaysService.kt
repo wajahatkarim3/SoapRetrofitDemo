@@ -24,4 +24,10 @@ interface HolidaysService
             @Query("year") year: String
     ) : Call<ArrayOfHoliday>
 
+    @GET("GetHolidaysForMonth")
+    fun getHolidaysForMonth(
+            @Query("countryCode") countryCode: String,
+            @Query("year") year: String,
+            @Query("month") month: String
+    ) : Call<ArrayOfHoliday>
 }

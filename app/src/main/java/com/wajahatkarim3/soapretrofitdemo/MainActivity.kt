@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.btnCallService).setOnClickListener {
-            loadAvailableCountries()
+            loadHolidaysListByMonth()
         }
 
     }
@@ -86,6 +86,30 @@ class MainActivity : BaseActivity() {
             }
 
             override fun onResponse(call: Call<ArrayOfCountryCode>?, response: Response<ArrayOfCountryCode>?) {
+                var i = 0
+                i++
+                i++
+                i++
+                i++
+            }
+
+        })
+    }
+
+    fun loadHolidaysListByMonth()
+    {
+        var call = getHolidaysAPI().getHolidaysForMonth("UnitedStates", "2018", "5")
+        call.enqueue(object : Callback<ArrayOfHoliday>{
+            override fun onFailure(call: Call<ArrayOfHoliday>?, t: Throwable?) {
+                t?.printStackTrace()
+                var i = 0
+                i++
+                i++
+                i++
+                i++
+            }
+
+            override fun onResponse(call: Call<ArrayOfHoliday>?, response: Response<ArrayOfHoliday>?) {
                 var i = 0
                 i++
                 i++
