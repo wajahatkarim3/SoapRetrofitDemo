@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -10,9 +12,7 @@
             type="com.wajahatkarim3.soapretrofitdemo.screens.home.HomePresenter" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -36,12 +36,16 @@
             android:textSize="@dimen/_23ssp"
             android:paddingLeft="@dimen/_10sdp"/>
 
-        <include layout="@layout/week_day_headings_layout"/>
-
-        <sun.bob.mcalendarview.views.ExpCalendarView
-            android:id="@+id/calendar_exp"
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:mcv_showOtherDates="all"
+            app:mcv_selectionColor="#B3BDC2"
+            app:mcv_dateTextAppearance="@style/DayViewStyle"
+            app:mcv_weekDayTextAppearance="@style/WeekDayHeadingStyle"
+            />
+
 
     </LinearLayout>
 </layout>

@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
     implementation 'org.simpleframework:simple-xml:2.7.1'
+    implementation 'net.danlew:android.joda:2.9.9.3'
 
     // Dagger 2
     implementation 'com.google.dagger:dagger:2.13'
@@ -64,7 +65,7 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.5'
     implementation 'com.intuit.ssp:ssp-android:1.0.5'
     implementation 'com.github.gurleensethi:LiteUtilities:v1.3.0'
-    implementation 'sun.bob:mcalendarview:1.0.0'
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 
     // Testing
     testImplementation 'junit:junit:4.12'

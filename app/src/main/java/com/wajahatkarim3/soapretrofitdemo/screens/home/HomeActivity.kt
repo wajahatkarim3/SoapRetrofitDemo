@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.wajahatkarim3.soapretrofitdemo.R
 import com.wajahatkarim3.soapretrofitdemo.base.BaseActivity
+import com.wajahatkarim3.soapretrofitdemo.custom.CurrentDateDecorator
+import com.wajahatkarim3.soapretrofitdemo.custom.TodayDecorator
 import com.wajahatkarim3.soapretrofitdemo.databinding.ActivityHomeBinding
-import com.wajahatkarim3.soapretrofitdemo.models.HolidayCodeModel
-import sun.bob.mcalendarview.utils.ExpCalendarUtil
+import com.wajahatkarim3.soapretrofitdemo.utils.toCalendarDay
+import org.joda.time.DateTime
+import java.util.*
 
 class HomeActivity : BaseActivity(), HomeContract.View {
 
@@ -30,7 +34,26 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     }
 
     override fun setupViews() {
+        // Month Year Headings
+        setMonthYearHeading(DateTime())
+
         // Calendar
+        bi.calendarView.topbarVisible = false
+        bi.calendarView.showOtherDates = MaterialCalendarView.SHOW_DEFAULTS
+        //bi.calendarView.currentDate = DateTime().toCalendarDay()
+        bi.calendarView.addDecorator(CurrentDateDecorator(this))
+        //bi.calendarView.addDecorator(TodayDecorator(this))
+        bi.calendarView.setDateTextAppearance(R.style.TodayTextAppearance)
+        //bi.calendarView.selectedDate = DateTime().toCalendarDay()
+
+
+        // Calendar Listeners
+        bi.calendarView.setOnMonthChangedListener { widget, date ->
+            var dd = DateTime(date.date)
+            dd = dd.plusMonths(1)
+            setMonthYearHeading(dd)
+        }
+
     }
 
     override fun showLoading(message: String) {
@@ -39,6 +62,11 @@ class HomeActivity : BaseActivity(), HomeContract.View {
 
     override fun hideLoading() {
         hideProgress()
+    }
+
+    override fun setMonthYearHeading(date: DateTime) {
+        bi.txtMonth.text = date.toString("MMMM")
+        bi.txtYear.text = date.toString("YYYY")
     }
 
 
