@@ -7,9 +7,9 @@ import org.simpleframework.xml.Root
 class HolidayCodeModel {
 
     @field:Element(name = "Code", required = false)
-    private var Code: String? = null
+    var Code: String? = null
 
     @field:Element(name = "Description", required = false)
-    private var Description: String? = null
+    var Description: String? = null
 
 }

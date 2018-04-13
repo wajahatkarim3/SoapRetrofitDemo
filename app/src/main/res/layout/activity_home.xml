@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="view"
+            type="com.wajahatkarim3.soapretrofitdemo.screens.home.HomeContract.View"/>
+        <variable
+            name="presenter"
+            type="com.wajahatkarim3.soapretrofitdemo.screens.home.HomePresenter" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        tools:context=".screens.home.HomeActivity">
+
+        <TextView android:id="@+id/txtYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_15ssp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"/>
+
+        <TextView android:id="@+id/txtMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="August"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_23ssp"
+            android:paddingLeft="@dimen/_10sdp"/>
+
+        <include layout="@layout/week_day_headings_layout"/>
+
+        <sun.bob.mcalendarview.views.ExpCalendarView
+            android:id="@+id/calendar_exp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>
