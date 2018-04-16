@@ -16,6 +16,7 @@ import com.wajahatkarim3.soapretrofitdemo.custom.EventDecortor
 import com.wajahatkarim3.soapretrofitdemo.custom.TodayDecorator
 import com.wajahatkarim3.soapretrofitdemo.databinding.ActivityHomeBinding
 import com.wajahatkarim3.soapretrofitdemo.utils.toCalendarDay
+import com.wajahatkarim3.soapretrofitdemo.utils.toJodaDate
 import org.joda.time.DateTime
 import java.util.*
 import kotlin.collections.ArrayList
@@ -48,12 +49,18 @@ class HomeActivity : BaseActivity(), HomeContract.View {
         bi.calendarView.addDecorator(CurrentDateDecorator(this))
         bi.calendarView.setDateTextAppearance(R.style.TodayTextAppearance)
 
+        // Today
+        bi.txtDateSelected.text = DateTime().toString("EEEE, MMMM dd")
 
         // Calendar Listeners
         bi.calendarView.setOnMonthChangedListener { widget, date ->
             var dd = DateTime(date.date)
             dd = dd.plusMonths(1)
             setMonthYearHeading(dd)
+        }
+        bi.calendarView.setOnDateChangedListener { widget, date, selected ->
+            var datetime = date.toJodaDate()
+            bi.txtDateSelected.text = datetime.toString("EEEE, MMMM dd")
         }
 
     }
@@ -69,6 +76,8 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     override fun setMonthYearHeading(date: DateTime) {
         bi.txtMonth.text = date.toString("MMMM")
         bi.txtYear.text = date.toString("YYYY")
+        bi.txtDateSelected.text = date.toString("MMMM yyyy")
+
     }
 
     override fun updateDates(list: ArrayList<CalendarDay>) {
