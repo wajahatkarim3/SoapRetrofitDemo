@@ -42,7 +42,6 @@ class HomeActivity : BaseActivity(), HomeContract.View {
         bi.calendarView.showOtherDates = MaterialCalendarView.SHOW_DEFAULTS
         //bi.calendarView.currentDate = DateTime().toCalendarDay()
         bi.calendarView.addDecorator(CurrentDateDecorator(this))
-        //bi.calendarView.addDecorator(TodayDecorator(this))
         bi.calendarView.setDateTextAppearance(R.style.TodayTextAppearance)
         //bi.calendarView.selectedDate = DateTime().toCalendarDay()
 
