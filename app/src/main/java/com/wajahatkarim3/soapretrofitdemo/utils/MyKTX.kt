@@ -27,3 +27,9 @@ fun DateTime.toCalendarDay() : CalendarDay
     var day = CalendarDay.from(this.year, this.monthOfYear-1, this.dayOfMonth)
     return day
 }
+
+fun CalendarDay.toDateKey() : String
+{
+    var date = this.toJodaDate()
+    return date.toString("yyyy-MM-dd")
+}

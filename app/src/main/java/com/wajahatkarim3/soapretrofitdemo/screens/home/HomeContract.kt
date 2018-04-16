@@ -11,12 +11,14 @@ interface HomeContract {
         fun showLoading(message: String)
         fun hideLoading()
         fun setMonthYearHeading(date: DateTime)
-        fun updateDates(list: ArrayList<CalendarDay>)
+        fun selectDate(date: CalendarDay)
+        fun updateDates(list: HashMap<String, ArrayList<HolidayModel>>)
     }
 
     interface Actions {
         fun initScreen()
         fun loadHolidayDates()
+        fun getEventsForDate(date: CalendarDay) : List<HolidayModel>
     }
 
     interface Repository {

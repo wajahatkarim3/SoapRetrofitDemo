@@ -12,69 +12,82 @@
             type="com.wajahatkarim3.soapretrofitdemo.screens.home.HomePresenter" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@android:color/white"
-        tools:context=".screens.home.HomeActivity">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/colorPrimary">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            tools:context=".screens.home.HomeActivity">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView android:id="@+id/txtYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2017"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_15ssp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_10sdp"/>
+
+                    <TextView android:id="@+id/txtMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="August"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_23ssp"
+                        android:paddingLeft="@dimen/_10sdp"/>
+
+                    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mcv_showOtherDates="all"
+                        app:mcv_selectionColor="#B3BDC2"
+                        app:mcv_dateTextAppearance="@style/DayViewStyle"
+                        app:mcv_weekDayTextAppearance="@style/WeekDayHeadingStyle"
+                        />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView android:id="@+id/txtYear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2017"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_15ssp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingLeft="@dimen/_10sdp"/>
-
-                <TextView android:id="@+id/txtMonth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="August"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_23ssp"
-                    android:paddingLeft="@dimen/_10sdp"/>
-
-                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-                    android:id="@+id/calendarView"
+                <TextView android:id="@+id/txtDateSelected"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_300sdp"
-                    app:mcv_showOtherDates="all"
-                    app:mcv_selectionColor="#B3BDC2"
-                    app:mcv_dateTextAppearance="@style/DayViewStyle"
-                    app:mcv_weekDayTextAppearance="@style/WeekDayHeadingStyle"
-                    />
+                    android:layout_height="wrap_content"
+                    android:background="#FAFAFA"
+                    android:padding="@dimen/_7sdp"
+                    android:text="TUESDAY, AUGUST 2018"
+                    android:textAllCaps="true"/>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    ></android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView android:id="@+id/txtDateSelected"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FAFAFA"
-                android:padding="@dimen/_7sdp"
-                android:text="TUESDAY, AUGUST 2018"
-                android:textAllCaps="true"/>
 
         </LinearLayout>
 
-
-    </LinearLayout>
+    </ScrollView>
 </layout>
