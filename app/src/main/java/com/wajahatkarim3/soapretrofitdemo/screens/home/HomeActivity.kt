@@ -1,20 +1,25 @@
 package com.wajahatkarim3.soapretrofitdemo.screens.home
 
 import android.databinding.DataBindingUtil
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.wajahatkarim3.soapretrofitdemo.R
 import com.wajahatkarim3.soapretrofitdemo.base.BaseActivity
 import com.wajahatkarim3.soapretrofitdemo.custom.CurrentDateDecorator
+import com.wajahatkarim3.soapretrofitdemo.custom.EventDecortor
 import com.wajahatkarim3.soapretrofitdemo.custom.TodayDecorator
 import com.wajahatkarim3.soapretrofitdemo.databinding.ActivityHomeBinding
 import com.wajahatkarim3.soapretrofitdemo.utils.toCalendarDay
 import org.joda.time.DateTime
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 
 class HomeActivity : BaseActivity(), HomeContract.View {
 
@@ -40,10 +45,8 @@ class HomeActivity : BaseActivity(), HomeContract.View {
         // Calendar
         bi.calendarView.topbarVisible = false
         bi.calendarView.showOtherDates = MaterialCalendarView.SHOW_DEFAULTS
-        //bi.calendarView.currentDate = DateTime().toCalendarDay()
         bi.calendarView.addDecorator(CurrentDateDecorator(this))
         bi.calendarView.setDateTextAppearance(R.style.TodayTextAppearance)
-        //bi.calendarView.selectedDate = DateTime().toCalendarDay()
 
 
         // Calendar Listeners
@@ -68,5 +71,10 @@ class HomeActivity : BaseActivity(), HomeContract.View {
         bi.txtYear.text = date.toString("YYYY")
     }
 
+    override fun updateDates(list: ArrayList<CalendarDay>) {
+        hideLoading()
+        bi.calendarView.addDecorator(EventDecortor(Color.RED, HashSet(list)))
+        bi.calendarView.invalidateDecorators()
+    }
 
 }

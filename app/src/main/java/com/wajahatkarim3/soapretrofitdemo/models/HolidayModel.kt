@@ -7,23 +7,26 @@ import org.simpleframework.xml.Root
 data class HolidayModel (
 
     @field:Element(name = "Country", required = false)
-    private var Country: String? = null,
+    var Country: String? = null,
 
     @field:Element(name = "HolidayCode", required = false)
-    private var HolidayCode: String? = null,
+    var HolidayCode: String? = null,
 
     @field:Element(name = "Descriptor", required = false)
-    private var Descriptor: String? = null,
+    var Descriptor: String? = null,
 
     @field:Element(name = "HolidayType", required = false)
-    private var HolidayType: String? = null,
+    var HolidayType: String? = null,
 
     @field:Element(name = "DateType", required = false)
-    private var DateType: String? = null,
+    var DateType: String? = null,
 
     @field:Element(name = "BankHoliday", required = false)
-    private var BankHoliday: String? = null,
+    var BankHoliday: String? = null,
+
+    @field:Element(name = "Date", required = false)
+    var Date: String? = null,
 
     @field:Element(name = "RelatedHolidayCode", required = false)
-    private var RelatedHolidayCode: String? = null
+    var RelatedHolidayCode: String? = null
 )
